@@ -26,7 +26,9 @@
     "cleanup": "mop -v",
     "flow": "flow",
     "i18n-prepare-untranslated": "node ./scripts/prepareUntranslated.js && ./node_modules/.bin/rip json2pot 'app/i18n/extracted/**/*.json' -c id -o app/i18n/pot/decrediton.pot",
-    "i18n-assemble-translated": "node ./scripts/assembleTranslated.js && ./node_modules/.bin/rip po2json 'app/i18n/po/*.po' -m app/i18n/extracted/**/*.json -c id -o app/i18n/translations"
+    "i18n-assemble-translated": "node ./scripts/assembleTranslated.js && ./node_modules/.bin/rip po2json 'app/i18n/po/*.po' -m app/i18n/extracted/**/*.json -c id -o app/i18n/translations",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "jest": {
     "verbose": true,
@@ -63,7 +65,10 @@
       "package.json"
     ],
     "extraResources": [
-      { "from": "bin", "to": "bin"},
+      {
+        "from": "bin",
+        "to": "bin"
+      },
       "*.node"
     ],
     "win": {
@@ -213,10 +218,12 @@
     "redux-thunk": "^2.1.0",
     "reselect": "^3.0.1",
     "source-map-support": "^0.4.6",
-    "winston": "^2.3.1"
+    "winston": "^2.3.1",
+    "snyk": "^1.316.1"
   },
   "devEngines": {
     "node": ">=6.x",
     "npm": ">=3.x"
-  }
+  },
+  "snyk": true
 }
